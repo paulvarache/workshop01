@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket example</title>
+</head>
+    <body>
+
+    <button id="button">Click me</button>
+    <p id="counter"></p>
+
+    <script type="text/javascript" src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect("http://localhost:3000");
+        button.addEventListener('click', function () {
+            socket.emit('clicked');
+            socket.on('clicked', function (number) {
+                counter.innerHTML = number;
+            });
+        });
+    </script>
+    </body>
+</html>

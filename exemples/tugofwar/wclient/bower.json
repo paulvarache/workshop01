@@ -1,0 +1,19 @@
+{
+  "name": "tugofwar",
+  "version": "0.0.0",
+  "authors": [
+    "Paul Varache <perso@paulvarache.ninja>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-roboto": "Polymer/font-roboto#~0.5.5",
+    "polymer": "Polymer/polymer#~0.8.0"
+  }
+}

@@ -1,0 +1,85 @@
+@font-face {
+    font-family: DigitalDream;
+    src: url('../font/digitaldream.ttf');
+}
+
+.wrapper {
+    position: relative;
+    padding: 1em 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#arrival {
+    clear: both;
+    font-size: 140%;
+    text-align: center;
+    padding: 1em 0 3em 0;
+}
+
+#canvas img { width: 100%; }
+
+#board {
+    background: #57565b url('../img/board.png') no-repeat center;
+    min-height: 549px;
+    width: 920px;
+    padding-left: 4%;
+    padding-top: 0px;
+    letter-spacing: 0.15em;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+    position: absolute;
+}
+
+#destinationTime *, #presentTime *, #lastTimeDeparted * {
+    font-family: DigitalDream!important;
+    font-size: 140%;
+    line-height: 3.3;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+#destinationTime { color: #e37624; text-shadow: 0 0 1em #e37624; padding-top: 0.1em !important;}
+#presentTime { color: #a2ef6f; text-shadow: 0 0 1em #a2ef6f; padding-top: 0.7em !important;}
+#lastTimeDeparted { color: #edce71; text-shadow: 0 0 1em #edce71; padding-top: 0.7em !important;}
+
+.day { margin-left: 1em !important; }
+.year { margin-left: 1.2em !important; }
+.hour { margin-left: 1.4em !important; }
+.min { margin-left: 1.1em !important; }
+
+#destinationTime .month { margin-left: 0.45em; }
+#destinationTime .year { margin-left: 0.9em; }
+
+#presentTime .month { margin-left: 0.28em; }
+#presentTime .year { margin-left: 0.9em; }
+
+#lastTimeDeparted .month { margin-left: 0.09em; }
+#lastTimeDeparted .hour { margin-left: 1.25em; margin-right: -0.05em; }
+
+#qa {
+    clear: both;
+    float: none;
+    display: inline-block;
+    margin-bottom: 2em;
+}
+
+h1#question, h1#response {
+    float: left;
+    display: block;
+    clear: none;
+}
+
+h1#question {
+    width: 70%;
+    text-align: left;
+    padding: 0.4em 0;
+}
+
+h1#response {
+    width: 30%;
+    font-size: 600%;
+    font-weight: 900;
+}

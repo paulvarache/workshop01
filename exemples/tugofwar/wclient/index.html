@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tug of war</title>
+    <meta name="viewport"
+    content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="import" href="components/game/tug-of-war.html">
+    <link rel="import" href="components/username-page/username-page.html">
+    <style type="text/css">
+        html,body {
+            height: 100%;
+            margin: 0;
+            background-color: #E5E5E5;
+            font-family: 'RobotoDraft', sans-serif;
+        }
+        tug-of-war {
+            opacity: 0;
+            z-index: 9;
+        }
+        username-page {
+            z-index: 10;
+        }
+        tug-of-war, username-page {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: opacity ease-out 200ms;
+        }
+    </style>
+</head>
+    <body fullbleed layout vertical>
+        <username-page id="username"></username-page>
+        <tug-of-war flex id="game"></tug-of-war>
+        <script type="text/javascript" src="http://10.19.1.67:3000/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            window.socket = io.connect('http://10.19.1.67:3000');
+            var usernamePage = document.getElementById('username');
+            usernamePage.addEventListener('start', function (infos) {
+                window.socket.emit('user', {name: infos.detail});
+                usernamePage.style.opacity = '0';
+                usernamePage.style.zIndex = '9';
+                var game = document.getElementById('game');
+                game.style.opacity = "1";
+                game.style.zIndex = "10";
+                game.init();
+            });
+        </script>
+    </body>
+</html>

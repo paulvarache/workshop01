@@ -1,0 +1,83 @@
+.lefted {
+    text-align: left;
+}
+.negative h3, .negative small, .negative p, .negative h1, .negative h2, .negative div{
+    color: white !important;
+}
+.layout {
+    display: flex;
+}
+.horizontal {
+    flex-direction: row;
+}
+.vertical {
+    flex-direction: column;
+}
+.flex {
+    flex-grow: 1;
+}
+.flex.two {
+    flex-grow: 2;
+}
+.flex.three {
+    flex-grow: 3;
+}
+.flex.four {
+    flex-grow: 4;
+}
+.flex.five {
+    flex-grow: 5;
+}
+.flex.six {
+    flex-grow: 6;
+}
+.self-center {
+    align-self: center;
+}
+.self-stretch {
+    align-self: stretch;
+}
+.flex.self-start {
+    align-self: flex-start;
+}
+.flex.self-end {
+    align-self: flex-start;
+}
+.layout.centered {
+    align-items: center;
+}
+.layout.stretch {
+    align-items: stretch;
+}
+.layout.end {
+    align-items: flex-end;
+}
+.layout.justify-center {
+    justify-content: center;
+}
+.border {
+    margin: 15px !important;
+    background: rgba(255, 255, 255, 0.12);
+    border: 4px solid #333 !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.call-stack {
+    background-color: #FFFFA2;
+}
+.arrow {
+    font-size: 4em !important;
+}
+.not-there:not(.visible) {
+    display: none;
+}
+.fade-out.not-there {
+    display: block;
+}
+.fade-out.visible.not-there {
+    display: none;
+}
+section.full {
+    top: 0px;
+    height: 100%;
+    display: block;
+}

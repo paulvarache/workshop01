@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Workshop #01: Node.JS</title>
+
+		<meta name="author" content="Paul Varache">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bttf.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section class="negative lefted" data-background="img/background.jpg">
+					<h3>Workshop #01:</h3>
+					<h3>Node.JS</h3>
+				</section>
+
+				<section class="negative" data-background-video="img/timelapse.mp4" data-background-video-loop>
+					<div class="layout horizontal centered">
+						<img src="img/profile.jpg" style="height: 100px; border-radius: 50%; border: 3px solid black; margin-right: 15px">
+						<div style="text-align: left" class="negative">
+							<div>Paul Varache</div>
+							<div style="font-size: 24px">Ysance</div>
+							<div><small>github.com/paulvarache</small></div>
+						</div>
+						<div class="layout vertical flex">
+							<div>GhettoBlaster</div>
+							<div>NodeGPIO</div>
+							<div>PITimelapse</div>
+							<div>MusicButler</div>
+							<div>PokerPlanning</div>
+							<div>DMP</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="negative" data-background="img/callback-hell.png" style="font-weight: bold">
+					<h1>Javascript</h1>
+					<p><small>(LOL)</small></p>
+				</section>
+
+				<section>
+					<div class="layout horizontal centered">
+						<div class="flex">
+							<img src="img/logo-php.png" width="300">
+						</div>
+						<span>VS</span>
+						<div class="flex">
+							<img src="img/node.png" width="300">
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Node.js is a</h4>
+					<h4 class="fragment">single-threaded</h4>
+					<h3 class="fragment">non-blocking</h3>
+					<h3 class="fragment">asynchronous</h3>
+					<h2 class="fragment">concurrent</h2>
+					<small class="fragment">language</small>
+				</section>
+
+				<section>
+					<section>
+						<h3>Comment Node.JS est né ?</h3>
+						<img class="fragment" src="img/b2tf.gif">
+					</section>
+					<section style="position: relative">
+						<div class="layout vertical" id="board">
+							<div id="destinationTime" class="layout horizontal flex">
+								<span class="month">SEP</span>
+								<span class="day">02</span>
+								<span class="year">2008</span>
+								<span class="hour">02</span>
+								<span class="min">54</span>
+							</div>
+							<div id="presentTime" class="layout horizontal flex">
+								<span class="month">JUN</span>
+								<span class="day">11</span>
+								<span class="year">2015</span>
+								<span class="hour"></span>
+								<span class="min"></span>
+							</div>
+							<div id="lastTimeDeparted" class="layout horizontal flex">
+								<span class="month">OCT</span>
+								<span class="day">26</span>
+								<span class="year">1985</span>
+								<span class="hour">01</span>
+								<span class="min">20</span>
+							</div>
+							<div style="position: absolute; top:0; bottom:0; left:0; right: 0" class="fragment">
+								<div class="layout vertical centered justify-center" style="height: 100%">
+									<img src="img/chrome.png" width="400">
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<img src="img/v8.png" width="400">
+						<p>Moteur Javascript C++</p>
+						<p>Modulable</p>
+						<p class="fragment grow">Open source</p>
+					</section>
+				</section>
+
+				<section class="lefted negative" data-background="img/ryandahl.jpg">
+					<h3>2. Ryan Dahl</h3>
+					<p>Joyent</p>
+					<p class="fragment"><small>(Dieu vivant)</small></p>
+				</section>
+
+				<section>
+					<img src="img/libuv.png" width="400">
+					<div class="fragment border">
+						<h3>Libev</h3>
+						<small>
+							High performance event loop in C
+						</small>
+						<h3>LibEio</h3>
+						<small>
+							Asynchronous I/O library for C
+						</small>
+						<h3>c-ares</h3>
+						<small>
+							Asychronous DNS requests library for C
+						</small>
+						<h3>...</h3>
+					</div>
+					<aside class="notes">
+						Libuv allows asynchronous TCP and UDP sockets, DNS resolution, FS, IPC with socket sharing, child process, thread pool, high resolution clock.
+						All of that on Linux, MacOS and Windows
+					</aside>
+				</section>
+
+				<section>
+					<img src="img/node.png" width="700">
+					<div class="layout horizontal">
+						<div class="border flex layout centered justify-center">
+							<img src="img/v8.png" width="300">
+						</div>
+						<div class="flex">
+							<h3>C++ API</h3>
+							<div class="border">
+								<img class="self-centered" src="img/libuv.png" width="300">
+								<div class="border">
+									<small>libev</small><br>
+									<small>libeio</small><br>
+									<small>...</small><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Node.js is a</h4>
+					<h4 class="fragment">single-threaded</h4>
+					<h3 class="fragment">non-blocking</h3>
+					<h3 class="fragment">asynchronous</h3>
+					<h2 class="fragment">concurrent</h2>
+					<small class="fragment">language</small>
+				</section>
+
+				<section>
+					<div class="layout vertical centered">
+						<img src="img/uber.jpg" height="120">
+						<img src="img/linkedin.png" height="100">
+						<img src="img/paypal_logo.jpg" height="100">
+						<img src="img/ebay.jpg" height="100">
+						<img src="img/ysance.jpg" height="160">
+						<div>...</div>
+						<a href="https://nodejs.org/industry/">Liste plus exhaustive</a>
+					</div>
+				</section>
+
+				<section>
+					<h4>Le Callstack</h4>
+					<div class="layout horizontal">
+						<pre class="flex" style="max-width: 65%">
+							<code>
+function multiply(a, b) {
+	return a * b;
+}
+
+function square(n) {
+	return multiply(n, n);
+}
+
+function printSquare (n) {
+	var result = square(n);
+	console.log(result);
+}
+
+printSquare(2);
+							</code>
+						</pre>
+						<div class="flex border layout vertical">
+							<div class="flex">Call Stack</div>
+							<div class="fragment not-there" data-fragment-index="3">
+								<div class="border call-stack fragment fade-out not-there" data-fragment-index="20">multipy()</div>
+							</div>
+							<div class="fragment not-there" data-fragment-index="2">
+								<div class="border call-stack fragment fade-out not-there" data-fragment-index="30">square()</div>
+							</div>
+							<div class="fragment not-there" data-fragment-index="31">
+								<div class="border call-stack fragment fade-out not-there" data-fragment-index="32">console.log()</div>
+							</div>
+							<div class="fragment not-there" data-fragment-index="1">
+								<div class="border call-stack fragment fade-out not-there" data-fragment-index="40">printSquare()</div>
+							</div>
+							<div class="border call-stack fragment fade-out" data-fragment-index="50">main()</div>
+						</div>
+					</div>
+
+				</section>
+
+				<section>
+					<h6>Node.js</h6>
+					<div class="layout vertical stretch">
+						<div class="flex layout horizontal stretch">
+							<div class="flex layout vertical">
+								<div class="flex layout vertical border">
+									<img class="self-center" src="img/v8.png" width="100">
+									<div class="flex layout horizontal stretch">
+										<div class="flex border fragment" data-fragment-index="1">Heap</div>
+										<div class="flex layout vertical border fragment" data-fragment-index="2">
+											<div class="flex">Stack</div>
+											<div class="border call-stack fragment" data-fragment-index="4">console.log()</div>
+											<div class="border call-stack fragment" data-fragment-index="3">main()</div>
+										</div>
+									</div>
+								</div>
+								<h2 class="fragment" data-fragment-index="70">↻</h2>
+							</div>
+							<h1 class="self-center fragment" data-fragment-index="40">→</h1>
+							<div class="flex layout vertical center fragment" data-fragment-index="5">
+								<div>API C++</div>
+								<div class="border">filesystem</div>
+								<div class="border">network</div>
+								<div class="border">setTimeout</div>
+								<h1 class="flex fragment" data-fragment-index="50">↓</h1>
+							</div>
+						</div>
+						<div class="layout horizontal fragment" data-fragment-index="6">
+							<div class="self-center">Callback<br>queue</div>
+							<div class="flex layout horizontal border">
+								<div class="border call-stack fragment" data-fragment-index="51">onDone</div>
+								<div class="border call-stack fragment" data-fragment-index="52">onRequest</div>
+								<div class="border call-stack fragment" data-fragment-index="53">onResponse</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="full">
+					<div class="layout horizontal" style="height: 100%">
+						<pre class="flex" style="max-width: 40%; font-size: 16px">
+							<code>
+var fs = require('fs');
+
+fs.readFile(
+	'my-file.txt',
+	function (data) {
+		console.log(err, data);
+	});
+
+console.log("Finished");
+							</code>
+						</pre>
+						<div class="layout vertical flex">
+							<div class="layout flex horizontal">
+								<div class="flex border">Call Stack</div>
+								<div class="flex border">FS</div>
+							</div>
+							<div class="flex border">
+								Callback queue
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Serveur de fichiers statiques</h4>
+					<pre>
+						<code>
+var http = require('http'),
+    fs = require('fs');
+
+var server = http.createServer(function (req, res) {
+    var url = req.url === "/" ? "/index.html" : req.url;
+    fs.readFile('.' + url, function (err, data) {
+        if (err) {
+            if (err.code === "ENOENT") {
+                return res.end(http.STATUS_CODES["404"], 404);
+            }
+            return res.end(err.message, 500);
+        }
+        res.end(data, 200);
+    });
+});
+
+server.listen(3000);
+						</code>
+					</pre>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+			function padDigits(number, digits) {
+			    return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+			}
+
+			var hour = document.querySelector('#presentTime .hour'),
+				min = document.querySelector('#presentTime .min');
+
+			var d = new Date();
+
+			hour.innerText = padDigits(d.getHours() % 12 || 12, 2);
+			min.innerText = padDigits(d.getMinutes(), 2);
+
+		</script>
+
+	</body>
+</html>

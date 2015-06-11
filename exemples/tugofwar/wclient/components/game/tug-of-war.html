@@ -1,0 +1,102 @@
+<dom-module id="tug-of-war">
+
+    <style>
+        :host #container{
+            position: relative;
+            margin-top: -80px;
+            -webkit-transition: all linear 50ms;
+        }
+        :host #container img {
+            position: absolute;
+            width: 300px;
+            left: 50%;
+            margin-left: -150px;
+        }
+        :host #bruce {
+            z-index: 10;
+            position: absolute;
+            margin-top: 50%;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        :host #bottomBar {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: blue;
+            padding: 5px;
+        }
+
+        :host #clicks {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+    </style>
+
+    <template>
+        <div id="bruce"></div>
+        <div id="container">
+            <img id="rope" src="img/rope.png">
+            <img id="team" src="{{user.teamPic}}">
+        </div>
+        <div id="bottomBar">
+            <div>{{user.name}}</div>
+            <div id="clicks">
+                <span>Clicks perso: <span>{{count.mine}}</span></span>
+                <span>Clicks equipe: <span>{{count.team}}</span></span>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'tug-of-war',
+            count: {
+                mine: 0,
+                team: 0
+            },
+            user: {},
+            colors: {
+                blue: '#4545E0',
+                red: '#D03939'
+            },
+            init: function () {
+                this.addEventListener('click', this.onClick.bind(this));
+                window.socket.on('update', this.update.bind(this));
+                window.socket.on('init', this.onInit.bind(this));
+                window.socket.on('win', this.onWin.bind(this));
+            },
+            onClick: function () {
+                window.socket.emit('click');
+            },
+            onInit: function (info) {
+                this.user = info.user;
+                this.$.team.src = this.$.rope.src.replace('rope', this.user.team);
+                this.$.bottomBar.style.backgroundColor = this.colors[this.user.team];
+            },
+            update: function (count) {
+                this.count = count;
+                this.$.container.style.marginTop = (40 * count[this.user.team]) - 80 + "px";
+                this.$.bruce.style.display = 'none';
+            },
+            onWin: function (team) {
+                if (this.user.team === team) {
+                    this.$.bruce.style.backgroundColor = "green";
+                    this.$.bruce.innerHTML = "You win";
+                } else {
+                    this.$.bruce.style.backgroundColor = "yellow";
+                    this.$.bruce.innerHTML = "You loose";
+                }
+                this.$.bruce.style.display = "block";
+            }
+        });
+    </script>
+</dom-module>

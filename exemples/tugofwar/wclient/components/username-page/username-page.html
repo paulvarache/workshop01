@@ -1,0 +1,58 @@
+<dom-module id="username-page">
+    <style type="text/css">
+        :host {
+            height: 100%;
+        }
+        :host #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: center;
+        }
+        :host #button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            border: none;
+        }
+        :host #input{
+            border: 0px;
+            border-radius: 0px;
+            padding: 10px;
+            font-size: 1.2em;
+            margin: 10px;
+            width: 100%;
+            text-align: center;
+            font-weight: 100;
+        }
+    </style>
+    <template>
+        <div id="container">
+            <input type="text" id="input" pattern=".{4,10}" required placeholder="Username"/>
+            <button id="button">OK</button>
+        </div>
+    </template>
+    <script>
+    Polymer({
+
+        is: 'username-page',
+        created: function () {
+        },
+        ready: function () {
+            var u = sessionStorage.getItem('username');
+            if (u) {
+                this.$.input.value = u;
+            }
+            this.$.button.addEventListener('click', this.start.bind(this));
+        },
+        start: function () {
+            if (this.$.input.checkValidity()) {
+                sessionStorage.setItem('username', this.$.input.value);
+                this.fire('start', this.$.input.value);
+            }
+        }
+    })
+    </script>
+</dom-module>
